@@ -1,0 +1,11 @@
+# No GUI build files
+/WinDebloaterOfficialNoGUI/target
+/WinDebloaterOfficialNoGUI/.github
+/WinDebloaterOfficialNoGUI/.vscode
+/WinDebloaterOfficialNoGUI/Cargo.lock
+
+# GUI build files
+/WinDebloaterOfficialGUI/target
+/WinDebloaterOfficialGUI/.github
+/WinDebloaterOfficialGUI/.vscode
+/WinDebloaterOfficialGUI/Cargo.lock
