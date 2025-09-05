@@ -1,23 +1,30 @@
 mod bloatware;
-mod privacy;
-mod optimize;
-mod win11;
 mod customize;
+mod optimize;
+mod privacy;
 mod restore;
+mod win11;
 mod gui;
 
-use std::io::{self, Write};
+use std::env;
 
-fn main() {
-    // Lanzar la GUI directamente
-    let mut native_options = eframe::NativeOptions::default();
-    native_options.viewport.inner_size = Some([480.0, 600.0].into());
-    eframe::run_native(
-        "WinDebloater - Made by Hideki",
-        native_options,
-        Box::new(|_cc| Box::new(gui::WinDebloaterApp::default())),
-    ).unwrap();
+fn main() -> Result<(), eframe::Error> {
+    // Verificar si se ejecuta con argumentos de línea de comandos
+    let args: Vec<String> = env::args().collect();
+    
+    if args.len() > 1 && args[1] == "--cli" {
+        // Modo consola (para compatibilidad)
+        run_cli_mode();
+        Ok(())
+    } else {
+        // Modo GUI (por defecto)
+        gui::run_gui()
+    }
+}
 
+fn run_cli_mode() {
+    use std::io::{self, Write};
+    
     loop {
         println!("\nWinDebloater - Selecciona una opción:");
         println!("1. Eliminación de Bloatware");
@@ -39,7 +46,10 @@ fn main() {
             "4" => win11::run_win11_tweaks(),
             "5" => customize::run_customization(),
             "6" => restore::run_restore(),
-            "0" => { println!("Saliendo..."); break; },
+            "0" => {
+                println!("Saliendo...");
+                break;
+            }
             _ => println!("Opción no válida. Intenta de nuevo."),
         }
     }
