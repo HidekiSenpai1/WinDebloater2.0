@@ -48,6 +48,5 @@ Descargar y descomprimir el zip y ejecutar el .exe
 
 Download and unzip the zip and run the .exe
 
-## Nota
-
-Este proyecto está en desarrollo. ¡Contribuciones y sugerencias son bienvenidas!
+> [!NOTE]
+> Este proyecto está en desarrollo. ¡Contribuciones y sugerencias son bienvenidas!
